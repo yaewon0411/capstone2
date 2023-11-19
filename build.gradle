@@ -25,7 +25,8 @@ repositories {
 dependencies {
 	implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
 	//implementation 'javax.xml.bind:jaxb-api'
-	implementation 'javax.xml.bind:jaxb-runtime'
+	//implementation 'jakarta.xml.bind:jaxb-runtime'
+	implementation 'jakarta.xml.bind:jakarta.xml.bind-api'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
