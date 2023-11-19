@@ -33,7 +33,7 @@ public class AIController {
         Item findItem = aiService.getOne(findOne);
         return ResponseEntity.ok(itemService.showItemInfo(findItem.getId()));
     }
-    @PostMapping("/interest") //ai가 추천한 아이템에 표기한 관심도 -> 관심도>=4 이면 사용자 pick에 추가
+    @PostMapping("/interest") // ai가 추천한 아이템에 표기한 관심도 -> 관심도>=4 이면 사용자 pick에 추가
     public ResponseEntity<String> getInterest(HttpServletRequest request){
         int score = Integer.parseInt(request.getHeader("interest"));
         if(score>0){
