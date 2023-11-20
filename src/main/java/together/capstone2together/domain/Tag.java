@@ -3,6 +3,7 @@ package together.capstone2together.domain;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import java.io.Serializable;
 
 @Getter
 public enum Tag implements Serializable { //17개
