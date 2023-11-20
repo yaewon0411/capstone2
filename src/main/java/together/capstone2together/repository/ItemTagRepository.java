@@ -31,7 +31,7 @@ public class ItemTagRepository {
     태그 개수에 따라서 내보낼 아이템 결정해야 함
     태그 개수 5개면 각 태그당 4개씩 내보내는 식으로
      */
-    public List<ItemTag> findByTag(List<Tag> tagList){
+    public List<ItemTag> findByTagList(List<Tag> tagList){
         if(tagList.size()==0) throw new IllegalStateException("설정한 관심 태그가 없습니다.");
         List<ItemTag> result = new ArrayList<>();
         int limit = 20;
@@ -69,5 +69,11 @@ public class ItemTagRepository {
             return result;
         }
         return result;
+    }
+    public List<ItemTag> findByTag(Tag tag){
+        return em.createQuery("select it from ItemTag it where it.tag = :tag",ItemTag.class)
+                .setParameter("tag",tag)
+                .setMaxResults(20)
+                .getResultList();
     }
 }

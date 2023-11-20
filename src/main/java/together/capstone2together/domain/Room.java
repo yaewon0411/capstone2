@@ -48,6 +48,6 @@ public class Room {
         return room;
     }
     public boolean isFull(){
-        return roomMemberList.size()>=this.capacity; // -> 방 생성자도 이미 들어와있으므로 등호 들어가게
+        return roomMemberList.size()>this.capacity; // -> 방 생성자도 이미 들어와있으므로 등호 들어가게
     }
 }

@@ -152,7 +152,7 @@ class ItemRepositoryTest {
         tagList.add(Tag.EMPLOYMENT_ENTREPRENEURSHIP);
         tagList.add(Tag.ABROAD);
 
-        List<ItemTag> findList = itemTagRepository.findByTag(tagList);
+        List<ItemTag> findList = itemTagRepository.findByTagList(tagList);
         for (ItemTag itemTag : findList) {
             System.out.println("itemTag = " + itemTag.getItem().getTitle());
         }

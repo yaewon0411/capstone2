@@ -34,9 +34,9 @@ public class Member {
     //private String storageId; //대외활동 관심도 평가 가중치 저장소
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Room> ledRooms = new ArrayList<>(); //회원이 팀장으로서 생성한 방
-    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE)
     private List<RoomMember> joinedRooms = new ArrayList<>(); //회원이 팀원으로서 참여한 방. 팀장 id는 들어가지 x
-    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE)
     private List<Pick> pickList = new ArrayList<>();
 
 }

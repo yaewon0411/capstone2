@@ -32,8 +32,8 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     @Query("SELECT i FROM Item i WHERE " +
             "i.title LIKE %:keyword% OR " +
             "i.content LIKE %:keyword% OR " +
-            "i.sponsor LIKE %:keyword% OR " +
-            ":tag = i.tagList")
-    List<Item> searchedItem(@Param("keyword") String keyword, @Param("tag") Tag tag);
+            "i.sponsor LIKE %:keyword% " +
+            "and i.img is not null and i.homepage is not null")
+    List<Item> searchedItem(@Param("keyword") String keyword);
 
 }

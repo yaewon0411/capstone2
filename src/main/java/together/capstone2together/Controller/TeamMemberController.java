@@ -80,7 +80,9 @@ public class TeamMemberController {
         //지원자를 RoomMember로 등록
         SurveyAnswer findOne = surveyAnswerService.findById(surveyAnswerId);
         if(findOne.getStatus()== Status.PASS) {
-            RoomMember roomMember = RoomMember.create(findOne.getRoom(), findOne.getMember());
+            Member findMember = findOne.getMember();
+            Room findRoom = findOne.getRoom();
+            RoomMember roomMember = RoomMember.create(findRoom, findMember);
             roomMemberService.save(roomMember);
         }
     }

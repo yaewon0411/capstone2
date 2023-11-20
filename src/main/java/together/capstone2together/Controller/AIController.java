@@ -39,14 +39,34 @@ public class AIController {
         if(score>0){
             Member findMember = memberService.findById(request.getHeader("memberId"));
             Item findItem = itemService.findById(Long.valueOf(request.getHeader("itemId")));
-            if(score>3)
-                pickService.save(Pick.create(findMember, findItem));
-
+            System.out.println("findMember = " + findMember.getName());
+            System.out.println("findItem.getId() = " + findItem.getId());
+            if(score>3) {
+                Pick pick = Pick.create(findMember, findItem);
+                pickService.save(pick);
+            }
             Interest interest = Interest.create(findMember, findItem, score);
             interestService.save(interest);
             return ResponseEntity.ok("success");
         }
         return ResponseEntity.ok("success-no score");
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

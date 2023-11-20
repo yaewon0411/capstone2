@@ -25,6 +25,9 @@ public class PickService {
     //이미 찜한 아이템인지 중복 검사
     private void validateDuplicatedPick(Pick pick) {
         List<Pick> findList = pickRepository.findByMemberAndItem(pick.getMember(), pick.getItem());
+        for (Pick pick1 : findList) {
+            System.out.println("pick = " + pick1.getItem().getId() + pick1.getMember().getName());
+        }
         if(findList.size()>0) throw new IllegalStateException("이미 찜한 대외활동 입니다.");
     }
 

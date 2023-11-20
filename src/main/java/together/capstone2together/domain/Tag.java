@@ -38,10 +38,11 @@ public enum Tag { //17개
     public String getDescription(Tag tag){
         return tag.description;
     }
-    public static String containedKeyword(String keyword){
+    public static Tag containedKeyword(String keyword){
         for (Tag tag : Tag.values()) {
-            if(tag.getDescription().contains(keyword))
-                return tag.getDescription();
+            if(tag.getDescription().contains(keyword)){
+                return tag;
+            }
         }
         return null;
     }

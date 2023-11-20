@@ -39,7 +39,6 @@ public class SurveyAnswer {
         surveyAnswer.setMember(member);
         surveyAnswer.setAnswer(answer);
         surveyAnswer.setQuestion(question);
-        //surveyAnswer.setSurvey(survey);
         surveyAnswer.setStatus(Status.WAITING);
         surveyAnswer.setLocalDateTime(LocalDateTime.now());
         return surveyAnswer;

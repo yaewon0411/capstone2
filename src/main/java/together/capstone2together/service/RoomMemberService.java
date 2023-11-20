@@ -49,10 +49,11 @@ public class RoomMemberService {
 
         //팀원 반복문 돌려서 넣기
         for (ShowAllDto show : findList) {
-            object.put("role","팀원");
-            object.put("name",show.getName());
-            object.put("kakaotalkId",show.getKakaotalkId());
-            array.add(object);
+            JSONObject object2 = new JSONObject();
+            object2.put("role","팀원");
+            object2.put("name",show.getName());
+            object2.put("kakaotalkId",show.getKakaotalkId());
+            array.add(object2);
         }
         return array;
     }

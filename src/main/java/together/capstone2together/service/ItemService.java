@@ -8,12 +8,14 @@ import org.springframework.transaction.annotation.Transactional;
 import together.capstone2together.domain.Item;
 import together.capstone2together.domain.ItemTag;
 import together.capstone2together.domain.Tag;
+import together.capstone2together.dto.SearchDto;
 import together.capstone2together.repository.ItemRepository;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,19 +70,17 @@ public class ItemService {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         return currentTime.format(formatter);
     }
-    public List<Item> searchItems(String keyword) { //키워드는 제목에 들어있을 수도, 상세 내용에 들어있을 수도, 태그가 될 수도 있음
-        Tag tag = Tag.findByKeyword(keyword);
-        if(tag==null){
-            String description = Tag.containedKeyword(keyword);
-            if(description==null){
-
-            }
+    public List<SearchDto> searchItems(String keyword) { //키워드는 제목에 들어있을 수도, 상세 내용에 들어있을 수도, 태그가 될 수도 있음
+        List<Item> findList = itemRepository.searchedItem(keyword);
+        List<SearchDto> searchList = new ArrayList<>();
+        for (Item item : findList) {
+            SearchDto dto = new SearchDto();
+            dto.setId(item.getId());
+            dto.setTitle(item.getTitle());
+            dto.setTagList(item.getTagList());
+            searchList.add(dto);
         }
-        else{
-
-        }
-        System.out.println("tag = " + tag);
-        return itemRepository.searchedItem(keyword, tag);
+        return searchList;
     }
 
 }

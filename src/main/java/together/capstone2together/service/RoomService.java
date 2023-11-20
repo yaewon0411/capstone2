@@ -89,7 +89,7 @@ public class RoomService {
     //방에 인원이 다 찼는 지 검사
     public boolean checkCapacity(Long id){
         Room findOne = roomRepository.findById(id).get();
-        int count = roomMemberRepository.roomMemberCount(findOne);
+        int count = roomMemberRepository.roomMemberCount(findOne)+1;
         if(findOne.getCapacity() == count) return true;
         else return false;
     }

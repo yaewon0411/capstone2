@@ -1,5 +1,6 @@
 package together.capstone2together.Controller;
 
+import com.amazonaws.services.ec2.model.SearchLocalGatewayRoutesRequest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.HttpRequestHandler;
 import org.springframework.web.bind.annotation.*;
 import together.capstone2together.domain.*;
+import together.capstone2together.dto.SearchDto;
 import together.capstone2together.service.*;
 
 import java.util.ArrayList;
@@ -72,10 +74,13 @@ public class HomeController {
         return roomService.findByItem(findOne);
     }
 
+    //아 이거 좀 수정있음......기획이라고 검색하면 대외활동도 같이 묶여서 나옴. 해겷가ㅣ
     @GetMapping("/search")
-    public ResponseEntity<List<Item>> searchItems(@RequestParam String keyword) {
-        List<Item> result = itemService.searchItems(keyword);
-        return ResponseEntity.ok(result);
+    public ResponseEntity<List<SearchDto>> searchItems(@RequestParam String keyword) {
+        List<SearchDto> firstList = itemService.searchItems(keyword);
+        List<SearchDto> secondList = itemTagService.searchItems(keyword);
+        firstList.addAll(secondList);
+        return ResponseEntity.ok(firstList);
     }
 
     //아이템 검색하기 -> 제목, 상세내용, 태그 등으로 검색
