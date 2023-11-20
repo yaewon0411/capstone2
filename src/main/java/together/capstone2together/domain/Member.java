@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 @Getter@Setter
 @NoArgsConstructor @AllArgsConstructor
-public class Member {
+public class Member implements Serializable {
     @Id @Column(name = "member_id", unique = true)
     private String id;
     private String password;
