@@ -11,7 +11,7 @@ import java.util.List;
 @Getter @Setter
 @NoArgsConstructor
 @Table(name = "ItemTag")
-public class ItemTag {
+public class ItemTag implements Serializable {
     @Id @GeneratedValue
     @Column(name = "itemTag_id")
     private Long id;
