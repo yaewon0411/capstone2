@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 @Getter @Setter
 @NoArgsConstructor
-public class Item { //크롤링 결과 저장
+public class Item implements Serializable { //크롤링 결과 저장
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="item_id")
     private Long id;
