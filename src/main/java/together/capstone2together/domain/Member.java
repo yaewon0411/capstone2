@@ -3,6 +3,7 @@ package together.capstone2together.domain;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Cascade;
+import java.io.Serializable;
 
 import java.util.ArrayList;
 import java.util.List;
