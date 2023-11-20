@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-public enum Tag { //17개
+public enum Tag implements Serializable { //17개
     PLANNING_IDEA("기획/아이디어"),
     ADVERTISING_MARKETING("광고/마케팅"),
     THESIS_REPORT("논문/리포트"),
